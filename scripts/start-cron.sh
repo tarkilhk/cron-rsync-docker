@@ -4,4 +4,4 @@
 echo "${CRON_FREQUENCY} /scripts/rsync-script.sh >> /var/log/cron.log 2>&1" > /etc/crontab
 
 # Start the cron service
-cron -f
+crond -l 2 -f
