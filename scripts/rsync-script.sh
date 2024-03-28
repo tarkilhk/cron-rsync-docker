@@ -13,11 +13,13 @@ else
     touch "${LOCKFILE}"
 
     echo "Starting rsync operation" | logger
+    echo "Starting rsync operation 1"
 
     # Perform the rsync operation here
     rsync -avz $SOURCE_DIR/ $DEST_DIR 2>&1 | logger
 
     echo "Finished rsync operation" | logger
+    echo "Finished rsync operation 1"
 
     # Delete the lock file
     rm "${LOCKFILE}"
