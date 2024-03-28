@@ -12,14 +12,12 @@ else
     # The lock file doesn't exist, so create it and continue running
     touch "${LOCKFILE}"
 
-    echo "Starting rsync operation" | logger
-    echo "Starting rsync operation 1"
+    echo "Starting rsync operation"
 
     # Perform the rsync operation here
-    rsync -avz $SOURCE_DIR/ $DEST_DIR 2>&1 | logger
+    rsync -avz $SOURCE_DIR/ $DEST_DIR
 
-    echo "Finished rsync operation" | logger
-    echo "Finished rsync operation 1"
+    echo "Finished rsync operation"
 
     # Delete the lock file
     rm "${LOCKFILE}"
