@@ -1,17 +1,15 @@
+# Use the Alpine base image
 FROM alpine:latest
 
-# Install rsync and cron
-RUN apk update && apk add rsync dcron
+# Install cron
+RUN apk add --no-cache dcron
 
-# Add crontab file in the cron directory
-ADD crontab /etc/crontabs/root
+# Copy the rsync script and the start-cron script into the Docker image
+COPY rsync-script.sh /path/to/rsync-script.sh
+COPY start-cron.sh /start-cron.sh
 
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
+# Make the scripts executable
+RUN chmod +x /path/to/rsync-script.sh /start-cron.sh
 
-# Install your script
-ADD rsync-script.sh /rsync-script.sh
-RUN chmod +x /rsync-script.sh
-
-# Run the command on container startup
-CMD crond && tail -f /var/log/cron.log
+# Run the start-cron script when the container starts
+CMD ["/start-cron.sh"]
