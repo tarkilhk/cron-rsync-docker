@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: tarkilhk/cron-rsync-docker:latest
+          tags: tarkilhk/cron-rsync:latest
