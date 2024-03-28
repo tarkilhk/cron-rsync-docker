@@ -2,7 +2,7 @@
 FROM alpine:latest
 
 # Install cron, rsync, and bash
-RUN apk add --no-cache rsync bash syslog-ng
+RUN apk add --no-cache rsync bash
 
 # Copy the rsync script and the start-cron script into the Docker image
 COPY scripts/rsync-script.sh /scripts/rsync-script.sh
